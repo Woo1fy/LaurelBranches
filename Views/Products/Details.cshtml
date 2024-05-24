@@ -4,7 +4,152 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<div class="ProductOverview" style="display: flex;">
+
+    @* Left side of the product view *@
+    <div class="ProductOverfiew--left" style="flex: 1; display: flex; flex-direction: column; margin-right: 20px">
+        <div class="ProductImages" style="flex: 1;">
+            <img src="~/Images/@Model.ImagePath" style="max-width: 100%; max-height: 60vh;" />
+        </div>
+        <div class="ProductDescription" style="flex: 0;">
+            <p>@Html.DisplayFor(model => model.Description)</p>
+            <hr />
+            <p>В 100 граммах</p>
+            <div class="ProductOverview__info" style="display: flex; justify-content: space-between;">
+                <div class="calories-container">
+                    <span>@Html.DisplayFor(model => model.Calories)</span>
+                    <span">Ккал</span>
+                </div>
+                <div class="calories-container">
+                    <span>@Html.DisplayFor(model => model.Proteins) г</span>
+                    <span>Белки</span>
+                </div>
+                <div class="calories-container">
+                    <span>@Html.DisplayFor(model => model.Fats) г</span>
+                    <span>Жиры</span>
+                </div>
+                <div class="calories-container">
+                    <span>@Html.DisplayFor(model => model.Carbohydrates) г</span>
+                    <span>Углеводы</span>
+                </div>
+            </div>
+                    @* <p>@Html.DisplayFor(model => model.Calories)</p> *@
+            <div class="ProductOverview__info__ingredients"
+                <hr />
+                <p>Состав</p>
+                <p>@Html.DisplayFor(model => model.Composition)</p>
+            </div>
+        </div>
+    </div>
+
+    @* Right side of the product view *@
+    <div class="ProductOverfiew--right" style="flex: 1; margin-left: 20px">
+        <!-- Ваше описание здесь -->
+        <dl class="row">
+            <div id="ProductInfo" class="ProductInfo">
+                <div class="Heading">
+                    <h3 class="ProductOverview__heading Heading__heading h3">
+                        Шоколадный тортик
+                    </h3> <!---->
+                </div>
+                <div class="Price ProductOverview__price p1">
+                    <dd>@Html.DisplayFor(model => model.Price) руб.</dd>
+                </div>
+                <div>
+                    <details open>
+                        <summary>Доставка по области <hr /></summary>
+                        <div>
+                            <button>
+                                6 дюймов 3 слоя
+                            </button>
+                            <div>
+                                <p>Сливочный крем</p>
+                                <input type="checkbox">
+                                Шоколад
+                                </input>
+                            </div>
+                            <div>
+                                <p>Надпись</p>
+                                <input type="checkbox" id="option1" name="option1">
+                                <label for="option1">Без надписи</label><br>
+
+                                <input type="checkbox" id="option2" name="option2">
+                                <label for="option2">С Днём рождения!</label><br>
+
+                                <input type="checkbox" id="option3" name="option3">
+                                <input type="text" for="option3"></input><br>
+                            </div>
+                        </div>
+                    </details>
+                    <details>
+                        <summary>Самовывоз <hr /></summary>
+                        <div>
+                            <button>
+                                9 дюймов 2 слоя
+                            </button>
+                            <button>
+                                6 дюймов 3 слоя
+                            </button>
+                            <div>
+                                <p>Сливочный крем</p>
+                                <input type="checkbox" id="option1" name="option1">
+                                <label for="option1">Шоколад</label><br>
+
+                                <input type="checkbox" id="option2" name="option2">
+                                <label for="option2">Ваниль</label><br>
+                            </div>
+                            <div>
+                                <p>Надпись</p>
+                                <input type="checkbox" id="option1" name="option1">
+                                <label for="option1">Без надписи</label><br>
+
+                                <input type="checkbox" id="option2" name="option2">
+                                <label for="option2">С Днём рождения!</label><br>
+
+                                <input type="checkbox" id="option3" name="option3">
+                                <input type="text" for="option3"></input><br>
+                            </div>
+                        </div>
+                    </details>
+
+                    <div>
+                        <div>
+                            <button onclick="decrement()">-</button>
+                            <span id="counter">1</span>
+                            <button onclick="increment()">+</button>
+                            <button>Добавить в корзину</button>
+                        </div>
+                        <script>
+                            var counter = 1;
+                            var counterElement = document.getElementById("counter");
+
+                            function decrement() {
+                                if (counter == 1) {
+                                    return;
+                                }
+
+                                counter--;
+                                counterElement.textContent = counter;
+                            }
+
+                            function increment() {
+                                counter++;
+                                counterElement.textContent = counter;
+                            }
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </dl>
+    </div>
+</div>
+
+                    @* <h1>Details</h1>
 
 <div>
     <h4>Product</h4>
@@ -16,11 +161,11 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Title)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ImagePath)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImagePath)
+        <dd class="col-sm-10">
+            <img src="@Url.Content(Model.ImagePath)" alt="Product Image" />
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Description)
@@ -88,3 +233,4 @@
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+ *@

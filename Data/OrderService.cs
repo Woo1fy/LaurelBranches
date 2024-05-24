@@ -18,7 +18,7 @@ namespace LaurelBranches.Data
             return await GetAll()
                 .Include(o => o.Products)
                 .ThenInclude(o => o.Comments)
-                .FirstOrDefaultAsync(m => m.Active);
+                .FirstOrDefaultAsync(m => m.Active == true);
         }
 
         public async Task Remove(Order order)

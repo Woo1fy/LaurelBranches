@@ -1,16 +1,16 @@
-﻿@model LaurelBranches.Models.Product
-
+﻿@model LaurelBranches.Models.ProductVM
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityUser> userManager
 @{
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h2>Create Products</h2>
 
-<h4>Product</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
@@ -18,58 +18,50 @@
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ImagePath" class="control-label"></label>
-                <input asp-for="ImagePath" class="form-control" />
-                <span asp-validation-for="ImagePath" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
+                <label asp-for="Price" class="control-label">Price</label>
                 <input asp-for="Price" class="form-control" />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Discount" class="control-label"></label>
+                <label asp-for="Discount" class="control-label">Discount</label>
                 <input asp-for="Discount" class="form-control" />
                 <span asp-validation-for="Discount" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Weight" class="control-label"></label>
+                <label asp-for="Weight" class="control-label">Weight</label>
                 <input asp-for="Weight" class="form-control" />
                 <span asp-validation-for="Weight" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Composition" class="control-label"></label>
+                <label asp-for="Composition" class="control-label">Composition</label>
                 <input asp-for="Composition" class="form-control" />
                 <span asp-validation-for="Composition" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Calories" class="control-label"></label>
+                <label asp-for="Calories" class="control-label">Calories</label>
                 <input asp-for="Calories" class="form-control" />
                 <span asp-validation-for="Calories" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Proteins" class="control-label"></label>
-                <input asp-for="Proteins" class="form-control" />
-                <span asp-validation-for="Proteins" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Fats" class="control-label"></label>
+                <label asp-for="Fats" class="control-label">Fats</label>
                 <input asp-for="Fats" class="form-control" />
                 <span asp-validation-for="Fats" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Carbohydrates" class="control-label"></label>
+                <label asp-for="Carbohydrates" class="control-label">Carbohydrates</label>
                 <input asp-for="Carbohydrates" class="form-control" />
                 <span asp-validation-for="Carbohydrates" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="OrderId" class="control-label"></label>
-                <select asp-for="OrderId" class ="form-control" asp-items="ViewBag.OrderId"></select>
+                <label asp-for="Image" class="control-label"></label>
+                <input asp-for="Image" class="form-control" accept="image/*" style="width: 30%" />
+                <span asp-validation-for="Image" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -83,5 +75,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
